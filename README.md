@@ -7,6 +7,10 @@ This repository is broken down into LSR (Lua Script Resource) templates for conf
 
 If you are interested in learning about writing your own custom properties in your template file. Click here.
 
+```
+properties.[propertyName]={baseType="[propertyType]", pushType="propertyPushType", value="property default value"
+```
+
 ## Creating Custom Services 
 
 If you are interested in learning about writing your own custom services in your template file. Click here.
