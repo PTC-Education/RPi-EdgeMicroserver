@@ -58,3 +58,24 @@ serviceDefinitions.Jog(
 )
 ```
 You have just defined your first custom service!
+
+## Creating a Service Function
+Once you have defined your service you need to write a function that utilizes your inputs in order to do an action. 
+
+The skeleton structure for creating a service function is outlined below.
+```
+services.Jog = function(me, headers, query, data)
+    *** define the function actions within
+   return 200, true 
+end
+```
+We can define and use our input parameters by calling them as part of our function's data
+
+### Reading in Input data
+```
+// axis value passed into service call in Thingworx
+local axis = data.axis
+
+// dist value passed into service call in Thingworx
+local dist = data.axis
+```
