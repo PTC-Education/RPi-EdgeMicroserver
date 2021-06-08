@@ -22,9 +22,6 @@ Push Type of your custom property. Examples of possible types: ALWAYS, NEVER. A 
 #### 4. propertyDefaultValue
 Default value of your custom property. The type of this value is dependent on the propertyType, but will default to the 0 state if not supplied in the template file.
 
-### Reading and Writing Values to Custom Properties
-
-
 ### Example Custom Property Declaration
 
 Say we are creating a custom property that monitors the cpu_temperaure of your RaspberryPi. When creating a RemoteThing with this custom property, we must break down the information we need.
@@ -42,11 +39,3 @@ Plugging our parameters into the base declaration,
 properties.cpu_temperature={baseType="NUMBER", pushType="ALWAYS", value=0}
 ```
 You have just defined your first custom property!
-
-## Creating Custom Services 
-
-If you are interested in learning about writing your own custom services in your template file. Click here.
-
-## Integrating Python Scripts
-
-Python script integrations tied in with Services and Properties
