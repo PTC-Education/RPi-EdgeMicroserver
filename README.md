@@ -19,8 +19,29 @@ Type of your custom property. Examples of possible types: NUMBER, STRING, IMAGE.
 #### 3. propertyPushType
 Push Type of your custom property. Examples of possible types: ALWAYS, NEVER. A full reference of possible types can be found on [support.ptc.com](https://support.ptc.com/help/thingworx/platform/r9/en/index.html#page/ThingWorx%2FHelp%2FComposer%2FThings%2FThingProperties%2FThingProperties.html%23) under the Property Push Type section.
 
-### 4. propertyDefaultValue
+#### 4. propertyDefaultValue
 Default value of your custom property. The type of this value is dependent on the propertyType, but will default to the 0 state if not supplied in the template file.
+
+### Reading and Writing Values to Custom Properties
+
+
+### Example Custom Property Declaration
+
+Say we are creating a custom property that monitors the cpu_temperaure of your RaspberryPi. When creating a RemoteThing with this custom property, we must break down the information we need.
+
+For this case we will define our parameters:
+```
+propertyName = cpu_temperature
+propertyType = NUMBER
+propertyPushType = ALWAYS
+propertyDefaultValue = 0
+```
+Plugging our parameters into the base declaration,
+
+```
+properties.cpu_temperature={baseType="NUMBER", pushType="ALWAYS", value=0}
+```
+You have just defined your first custom property!
 
 ## Creating Custom Services 
 
