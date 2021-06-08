@@ -5,6 +5,6 @@ This repository is broken down into LSR (Lua Script Resource) templates for conf
 
 ## Creating Custom Properties
 
-This section of the repository outlines the process behind defining custom properties in the Lua Script Resource. It also outlines getting and setting values from properties. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/Creating-Custom-Properties) to get started writing custom properties.
+This section of the repository outlines the process behind defining custom properties in the Lua Script Resource. It also outlines getting and setting values from properties. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/tree/main/Creating%20Custom%20Properties) to get started writing custom properties.
 
 ## Creating Custom Services
