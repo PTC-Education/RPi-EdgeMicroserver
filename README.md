@@ -12,4 +12,4 @@ This section of the repository outlines the process behind defining custom prope
 This section of the repository outlines the process behind defining custom services in the Lua Script Resource. It also outlines writing service functions in order to utilize custom service inputs. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/tree/main/Creating%20Custom%20Services) to get started writing custom properties.
 
 ## Interfacing with Python Scripts using Services and Properties
-This section of the repository outlines interfacing with external Python3 scripts using custom properties and services. 
+This section of the repository outlines interfacing with external Python3 scripts using custom properties and services. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/tree/main/Interfacing%20with%20Python) to learn more about incorporating Python scripts into your services and properties.
