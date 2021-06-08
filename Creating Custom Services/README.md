@@ -24,24 +24,37 @@ Description of the input to the service. This description will appear as a toolt
 #### 5. outputType
 Type of your service output property. Examples of possible types: NUMBER, STRING, IMAGE. A full reference of possible types can be found on [support.ptc.com](https://support.ptc.com/help/thingworx/platform/r9/en/index.html#page/ThingWorx%2FHelp%2FComposer%2FThings%2FThingProperties%2FThingProperties.html%23) under the Property Base Type section. There can be as many inputs as you wish, just copy the input declaration and declare a unique inputName.
 
-#### 3. outputDescription
+#### 6. outputDescription
 Description of the output to the service. This description will appear as a tooltip in Thingworx once the service is live.
 
 
 ### Example Custom Service Declaration
 
-Say we are creating a custom property that monitors the cpu_temperaure of your RaspberryPi. When creating a RemoteThing with this custom property, we must break down the information we need.
+Say we are creating a custom service that controls the motion of a 3D printer with two inputs, axis and dist. When creating a RemoteThing with this custom service, we must break down the information we need.
 
 For this case we will define our parameters:
 ```
-propertyName = cpu_temperature
-propertyType = NUMBER
-propertyPushType = ALWAYS
-propertyDefaultValue = 0
+serviceName = Jog
+serviceDescription = Service that jogs 3d printer toolhead by specifying axis and distance of movement
+
+inputName1 = axis
+inputType1 = STRING
+inputDescription1 = movement axis (x,y,z)
+
+inputName2 = dist
+inputType2 = NUMBER
+inputDescription2 = relative jog distance (mm)
+
+outputType = BOOLEAN
+outputDescription = ""
 ```
 Plugging our parameters into the base declaration,
-
 ```
-properties.cpu_temperature={baseType="NUMBER", pushType="ALWAYS", value=0}
+serviceDefinitions.Jog(
+  input { name="axis", baseType="STRING", description="movement axis (x,y,z)" },
+  input { name="dist, baseType="NUMBER", description="relative jog distance (mm)" },
+  output { baseType="NUMBER", description="" },
+  description { "Service that jogs 3d printer toolhead by specifying axis and distance of movement" }
+)
 ```
-You have just defined your first custom property!
+You have just defined your first custom service!
