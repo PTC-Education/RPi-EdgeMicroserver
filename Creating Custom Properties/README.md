@@ -2,7 +2,7 @@
 
 In order to setup custom properties in your PiTemplate.lua file, you will need to follow the definition convention.
 Below the definition is outlined, and this will be placed at the top of your template file.
-```
+```lua
 properties.[propertyName]={baseType="[propertyType]", pushType="propertyPushType", value="propertyDefaultValue"
 ```
 #### 1. propertyName
@@ -22,7 +22,7 @@ Default value of your custom property. The type of this value is dependent on th
 Say we are creating a custom property that monitors the cpu_temperaure of your RaspberryPi. When creating a RemoteThing with this custom property, we must break down the information we need.
 
 For this case we will define our parameters:
-```
+```lua
 propertyName = cpu_temperature
 propertyType = NUMBER
 propertyPushType = ALWAYS
@@ -30,7 +30,7 @@ propertyDefaultValue = 0
 ```
 Plugging our parameters into the base declaration,
 
-```
+```lua
 properties.cpu_temperature={baseType="NUMBER", pushType="ALWAYS", value=0}
 ```
 You have just defined your first custom property!
@@ -40,7 +40,7 @@ You have just defined your first custom property!
 In order to read and write to the custom property, the value data member must be accessed.
 
 ### Writing a Value to a Custom Property
-```
+```lua
 properties.[propertyName].value = s
 ```
 #### 1. propertyName
@@ -49,7 +49,7 @@ Name of your custom property on Thingworx
 S is the string that you wish to assign to the custom property.
 
 ### Reading a Custom Property Value into a Variable
-```
+```lua
 customPropValue = properties.[propertyName].value
 ```
 #### 1. propertyName
