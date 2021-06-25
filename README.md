@@ -63,6 +63,12 @@ local serviceInput = data.inputName
 ```
 
 ## Interfacing with Python Scripts using Services and Properties
-This section of the repository outlines interfacing with external Python3 scripts using custom properties and services. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/tree/main/Interfacing%20with%20Python) to learn more about incorporating Python scripts into your services and properties.
+This section of the repository outlines interfacing with external Python3 scripts using custom properties and services.
+
+```lua
+local inputCmd = io.popen("python3 /path/to/file.py")
+```
+
+
 
 ---
