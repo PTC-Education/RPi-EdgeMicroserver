@@ -26,7 +26,7 @@ with your Thingworx instance. This connection over the AlwaysOn protocol will al
 This section of the repository outlines the process behind defining custom properties in the Lua Script Resource. It also outlines getting and setting values from properties.
 
 ```lua
--- Base Structure for declaring new properties
+-- Base structure for declaring new properties
 properties.[propertyName]={baseType="[propertyType]", pushType="propertyPushType", value="propertyDefaultValue"
 
 -- Example property creation
@@ -43,6 +43,24 @@ customPropValue = properties.[propertyName].value
 ## Creating Custom Services
 
 This section of the repository outlines the process behind defining custom services in the Lua Script Resource. It also outlines writing service functions in order to utilize custom service inputs. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/tree/main/Creating%20Custom%20Services) to get started writing custom properties.
+
+```lua
+-- Base structure for defining new services
+serviceDefinitions.[serviceName](
+  input { name="[inputName]", baseType="[inputType]", description="[inputDescription]" },
+  output { baseType="[outputType]", description="[outputDescription]" },
+  description { "[serviceDescription]" }
+)
+
+-- Base structure for implementing service callback functions
+services.[serviceName] = function(me, headers, query, data)
+    *** define the function actions within
+   return 200, true 
+end
+
+-- How to reference service inputs inside callback functions
+local serviceInput = data.inputName
+```
 
 ## Interfacing with Python Scripts using Services and Properties
 This section of the repository outlines interfacing with external Python3 scripts using custom properties and services. Click [here](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/tree/main/Interfacing%20with%20Python) to learn more about incorporating Python scripts into your services and properties.
