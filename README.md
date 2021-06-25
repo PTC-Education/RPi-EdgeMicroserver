@@ -3,7 +3,7 @@ Repository for Lua Script Resource templates and examples for usage with Python3
 
 This repository is broken down into LSR (Lua Script Resource) templates for configuring a Raspberry Pi RemoteThing.
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/blob/main/rpi_alwaysOn_thngwrx.png)
 
 
 ## Creating Custom Properties
