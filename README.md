@@ -66,7 +66,12 @@ local serviceInput = data.inputName
 This section of the repository outlines interfacing with external Python3 scripts using custom properties and services.
 
 ```lua
+-- Use the io library to run the python script
 local inputCmd = io.popen("python3 /path/to/file.py")
+
+-- Read in the std:output from the command prompt
+local s = inputCmd::read(*a)
+
 ```
 
 
