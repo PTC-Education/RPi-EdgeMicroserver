@@ -22,6 +22,7 @@ with your Thingworx instance. This connection over the AlwaysOn protocol will al
 
 ---
 <a name="properties"/>
+
 ## Creating Custom Properties
 
 This section of the repository outlines the process behind defining custom properties in the Lua Script Resource. It also outlines getting and setting values from properties.
