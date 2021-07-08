@@ -108,4 +108,9 @@ This section covers a high level overview of downloading files using the REST AP
       return False
 ```
 
+<a name="valuestreams"/>
+
+## Valuestream Properties
+Creating a property that 
+
 ---
