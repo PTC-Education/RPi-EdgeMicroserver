@@ -10,7 +10,7 @@
 
 
 ### Example Use Cases
-* [3D Printer EMS Control Hub]
+* [3D Printer EMS Control Hub](https://github.com/PTC-Education/RPi-EdgeMicroserver/tree/main/3D%20Printer%20Control%20Hub)
 
 This repository is broken down into LSR (Lua Script Resource) templates for configuring a Raspberry Pi RemoteThing.
 
