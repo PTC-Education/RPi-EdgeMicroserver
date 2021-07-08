@@ -84,7 +84,7 @@ local s = inputCmd::read(*a)
 <a name="fileDownload"/>
 
 ## Downloading Files from File Repositories to RPi EMS
-This section covers a high level overview of downloading files using the REST API. Using the FileRepositoryDownloader we can specify the repository and path to the file. By funneling the response of our api call, we can use file i/o to write our downloaded data to a file on our local machine. 
+This section covers a high level overview of downloading files using the REST API. Using the FileRepositoryDownloader we can specify the repository and path to the file. By funneling the response of our api call, we can use file i/o to write our downloaded data to a file on our local machine. If you would like to see a more robust example [click here](https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D%20Printer%20Control%20Hub/downloadFile.py)
 
 ```python
  # Request URL Parameters
