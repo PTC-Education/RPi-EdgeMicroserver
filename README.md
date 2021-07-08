@@ -1,4 +1,4 @@
-<h1 align="center">RaspberryPi-EMS-Lua-Python</h1>
+<h1 align="center">RPi-EdgeMicroserver</h1>
 <p align="center">Repository for Lua Script Resource templates and examples for usage with Python3</p> 
 
 
