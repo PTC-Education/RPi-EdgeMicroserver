@@ -4,9 +4,9 @@
 
 ### Table of Contents  
 * [Creating Custom Properties](#properties)  
-* [Creating Custom Services](#properties)
-* [Interfacing with Custom Python Scripts](#properties)
-* [Downloading Files from File Repositories](#properties)
+* [Creating Custom Services](#services)
+* [Interfacing with Custom Python Scripts](#pythonLua)
+* [Downloading Files from File Repositories](#fileDownload)
 
 
 
@@ -41,6 +41,7 @@ properties.[propertyName].value = s
 customPropValue = properties.[propertyName].value
 ```
 
+<a name="services"/>
 
 ## Creating Custom Services
 
@@ -63,6 +64,8 @@ end
 -- How to reference service inputs inside callback functions
 local serviceInput = data.inputName
 ```
+
+<a name="pythonLua"/>
 
 ## Interfacing with Python Scripts using Services and Properties
 This section of the repository outlines interfacing with external Python3 scripts using custom properties and services.
