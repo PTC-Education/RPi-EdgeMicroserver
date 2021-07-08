@@ -5,6 +5,7 @@
 ### Table of Contents  
 * [Creating Custom Properties](#properties)  
 * [Creating Custom Services](#services)
+* [Creating Properties for ValueStreams](#valuestreams)
 * [Interfacing with Custom Python Scripts](#pythonLua)
 * [Downloading Files from File Repositories](#fileDownload)
 
