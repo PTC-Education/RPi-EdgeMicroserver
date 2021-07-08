@@ -6,7 +6,8 @@
 * [Creating Custom Properties](#properties)  
 * [Creating Custom Services](#properties)
 * [Interfacing with Custom Python Scripts](#properties)
-<a name="properties"/>
+* [Downloading Files from File Repositories](#properties)
+
 
 
 This repository is broken down into LSR (Lua Script Resource) templates for configuring a Raspberry Pi RemoteThing.
@@ -20,7 +21,7 @@ with your Thingworx instance. This connection over the AlwaysOn protocol will al
 ![alt text](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/blob/main/rpi_alwaysOn_thngwrx.png)
 
 ---
-
+<a name="properties"/>
 ## Creating Custom Properties
 
 This section of the repository outlines the process behind defining custom properties in the Lua Script Resource. It also outlines getting and setting values from properties.
