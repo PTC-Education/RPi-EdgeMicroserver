@@ -3,6 +3,8 @@ import binascii
 import sys
 import os
 
+from uploadFile import *
+
 '''
 downloadFile():
     Inputs:
@@ -25,11 +27,11 @@ downloadFile():
         
          i.e. .py, .txt, .gcode files 
 '''
-def downloadFile(fileName:str, fileRepository:str, save:bool) -> bool:
+def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:bool = False) -> bool:
     
     # Request Headers
     headers = {
-        "appKey": os.getenv('THINGWORX_KEY'),
+        "appKey":os.getenv('THINGWORX_KEY'),
         "Content-Type":"application/json",
         "Accept":"application/json, */*"
     }
@@ -49,6 +51,8 @@ def downloadFile(fileName:str, fileRepository:str, save:bool) -> bool:
             file = open(fileName, "w")
             file.write(r.text)
             file.close()
+        if (upload):
+            uploadFileToOctoprint(fileName, r.text)
         return True
     except:
         return False
@@ -59,4 +63,4 @@ def downloadFile(fileName:str, fileRepository:str, save:bool) -> bool:
 fileName = sys.argv[1]
 fileRepository = sys.argv[2]
  
-downloadFile(fileName, fileRepository, True)
+downloadFile(fileName, fileRepository, save = True, upload = True)
