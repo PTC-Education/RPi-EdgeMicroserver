@@ -3,7 +3,10 @@
 
 
 ### Table of Contents  
-* [Installing Raspbian](#raspbian)  
+* [Installing Raspbian](#raspbian)
+* [Installing EMS](#ems)
+* [Generating Credential Environment Variables](#credentials)
+* [Running the Edge MicroServer](#run) 
 ---
 Following this guide on a fresh install of Raspbian will allow the user to connect their Octoprint instance to Thingworx using a RemoteThing. From there we can build mashups to securey monitor
 our printer's information from anywhere without worrying about port forwarding. 
