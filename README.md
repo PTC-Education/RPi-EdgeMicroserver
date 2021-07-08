@@ -9,6 +9,8 @@
 * [Downloading Files from File Repositories](#fileDownload)
 
 
+### Example Use Cases
+* [3D Printer EMS Control Hub]
 
 This repository is broken down into LSR (Lua Script Resource) templates for configuring a Raspberry Pi RemoteThing.
 
@@ -79,7 +81,7 @@ local s = inputCmd::read(*a)
 
 ```
 
-<a name="fileDownloads"/>
+<a name="fileDownload"/>
 
 ## Downloading Files from File Repositories to RPi EMS
 This section covers a high level overview of downloading files using the REST API. Using the FileRepositoryDownloader we can specify the repository and path to the file. By funneling the response of our api call, we can use file i/o to write our downloaded data to a file on our local machine. 
