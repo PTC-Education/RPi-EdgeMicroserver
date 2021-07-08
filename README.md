@@ -79,6 +79,30 @@ local s = inputCmd::read(*a)
 
 ```
 
+<a name="fileDownloads"/>
 
+## Downloading Files from File Repositories to RPi EMS
+This section covers a high level overview of downloading files using the REST API. Using the FileRepositoryDownloader we can specify the repository and path to the file. By funneling the response of our api call, we can use file i/o to write our downloaded data to a file on our local machine. 
+
+```python
+ # Request URL Parameters
+ host = os.getenv('THINGWORX_HOST')
+ path = "/Thingworx/FileRepositoryDownloader"
+ repositoryQuery = "?download-repository="
+ fileQuery = "&download-path=/"
+ 
+  # Concatenate Request URL
+  url = host + path + repositoryQuery + fileRepository + fileQuery + fileName
+
+  try:
+      r = requests.request("GET", url, headers = headers, allow_redirects=True)
+      if (save):
+          file = open(fileName, "w")
+          file.write(r.text)
+          file.close()
+      return True
+  except:
+      return False
+```
 
 ---
