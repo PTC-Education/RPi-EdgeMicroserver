@@ -17,10 +17,15 @@ Instead of hosting an image, we are going to go through the steps to download a 
 
 2. After flashing your drive, boot up your Raspberry Pi on a monitor so that you are able to access the graphical user interface. From here connect to your wifi network in order to download a few external packages
 
+For the first package we are going to download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is locked within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. We are going to drag this folder once downloaded into our documents on the Raspberry Pi. 
 
+3. Now that you have the EMS downloaded we need to load our app keys and Thingworx host information into our environment variables so that they will be accessible to all python scripts. Included in this repository is a bash script, setup.sh, that will be run as 
 
+```bash
+source setup.sh
+```
 
-[Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart)
+By running this script you will be prompted to enter your Thingworx, Onshape, and Octoprint credentials. These credentials will be persistently stored in your environment variables, but you will need to close out of your current terminal window for changes to take effect. 
 
 ---
 <a name="properties"/>
