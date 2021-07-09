@@ -18,6 +18,8 @@ Instead of hosting an image, we are going to go through the steps to download a 
 1. You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian OS onto a new SD card. 
 <br>
 
+![alt text](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/blob/main/rpi_alwaysOn_thngwrx.png)
+
 2. After flashing your drive, boot up your Raspberry Pi on a monitor so that you are able to access the graphical user interface. From here connect to your wifi network in order to download a few external packages
 
 For the first package we are going to download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is locked within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. We are going to drag this folder once downloaded into our documents on the Raspberry Pi. 
