@@ -10,6 +10,18 @@ Downloads the specified file from the specified file repository on your Thingwor
 
 Gets the current extruder and bed temperatures and formats the output for EMS property processing
 
+## jogPrinthead.py
+
+Takes in an axis and a jog distance and then moves the printhead the specified amount
+
+## preheatBed.py
+
+Takes in a temperature to preheat the bed
+
+## preheatExtruder.py
+
+Takes in a temperature to preheat the extruder
+
 ## takePhoto.py
 
 Gets the current Pi Camera image from the Octopi server and encodes to a binary string
