@@ -18,7 +18,9 @@ Instead of hosting an image, we are going to go through the steps to download a 
 1. You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian OS onto a new SD card. 
 <br>
 
-![alt text](https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D%20Printer%20Control%20Hub/raspbian-32bit.png)
+<p align="center">
+  <img src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D%20Printer%20Control%20Hub/raspbian-32bit.png" />
+</p>
 
 2. After flashing your drive, boot up your Raspberry Pi on a monitor so that you are able to access the graphical user interface. From here connect to your wifi network in order to download a few external packages
 
