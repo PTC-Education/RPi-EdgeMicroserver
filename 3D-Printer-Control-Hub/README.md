@@ -13,7 +13,7 @@ our printer's information from anywhere without worrying about port forwarding.
 
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/raspbian-32bit.png" />
+  <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/pi_ems_connections.png" />
 </p>
 
 ---
