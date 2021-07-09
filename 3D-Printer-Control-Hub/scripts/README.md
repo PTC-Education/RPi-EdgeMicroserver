@@ -6,6 +6,10 @@ Issues a cancel command for the current in progress job. Implemented on Thingwor
 
 Downloads the specified file from the specified file repository on your Thingworx server
 
+## getTemps.py
+
+Gets the current extruder and bed temperatures and formats the output for EMS property processing
+
 ## takePhoto.py
 
 Gets the current Pi Camera image from the Octopi server and encodes to a binary string
