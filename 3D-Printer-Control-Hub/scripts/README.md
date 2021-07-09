@@ -26,4 +26,6 @@ Takes in a temperature to preheat the extruder
 
 Gets the current Pi Camera image from the Octopi server and encodes to a binary string
 
-## 
+## uploadFile.py
+
+Uploads a local file to the Octopi server to be staged for printing
