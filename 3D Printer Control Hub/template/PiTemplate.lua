@@ -63,7 +63,7 @@ CALLBACK -- downloadSTL():
 	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
 --]]
 services.downloadSTL = function(me, headers, query, data)
-    local rootPaths = "python3 /home/pi/testingSTL.py \""
+    local rootPaths = "python3 $HOME/scripts/testingSTL.py \""
     local url = data.onshapeURL
     local uploadCmd = io.popen(rootPaths .. url .. "\"")
     return 200, true
