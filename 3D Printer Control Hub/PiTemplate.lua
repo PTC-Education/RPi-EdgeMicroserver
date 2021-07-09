@@ -1,45 +1,82 @@
 module ("templates.PiTemplate", thingworx.template.extend)
+
+-- Defining the custom Control Hub properties
+
+-- Bed_Temperature of the 3D printer
 properties.bed_temperature={baseType="NUMBER", pushType="ALWAYS", value=0, handlers="test"}
+-- Extruder Temperature of the 3D printer 
 properties.extr_temperature={baseType="NUMBER", pushType="ALWAYS", value=0, handler="test"}
+-- Live Camera feed from the 3D printer
 properties.remote_photo={baseType="IMAGE", pushType="ALWAYS", value =0}
 
+
+--[[ 
+GetSystemProperties(): 
+	Define the GetSystemProperties service 
+
+	Output - Boolean, if True, 200 
+			  else False, 400
+--]]
 serviceDefinitions.GetSystemProperties(
     output { baseType="BOOLEAN", description="" },
     description { "updates properties" }
 )
 
---serviceDefinitions.Jog(
---    input {name="axis", baseType="STRING", description="movement axis (x,y,z)"},
---    input {name="dist", baseType="NUMBER", description="relative jog distance (mm)"},
---    output { baseType="BOOLEAN", description="" },
---    description { "jogs printer" }
---)
 
-serviceDefinitions.uploadGCODE(
-    input {name="filename", baseType="STRING", description="filename in file repository"},
+--[[ 
+uploadFile():
+	uploadFile service definition
+
+	Input  - filename, STRING, filename in file repository
+                 repository, STRING, name of a Thingworx File Repository
+	Output - Boolean, if True, 200 
+			  else False, 400
+--]]
+serviceDefinitions.uploadFile(
+    input {name="filename", baseType="STRING", description="filename in File Repository"},
+    input {name="repository", baseType="STRING", description="repository name in Thingworx Server"},
     output {baseType="BOOLEAN", description=""},
-    description {"add custom gcode to text box and it will send to your 3D printer"} 
+    description {"Add custom gcode to text box and it will send to your 3D printer"} 
 )
 
 
+--[[
+downloadSTL():
+       downloadSTL service defintiion
+
+       Input  - onshapeURL, STRING, url of onshape part for download and export
+       Output - Boolean, if True, 200 
+			 else False, 400
+
+--]]
 serviceDefinitions.downloadSTL(
-    input {name="onshapeURL", baseType="STRING", description="filename in file repository"},
+    input {name="onshapeURL", baseType="STRING", description="Onshape Part Studio url"},
     output {baseType="BOOLEAN", description=""},
-    description {"slice new stl"}
+    description {"Input an onshape url and it will be sliced locally on the EMS and uploaded to the Octoprint instance for printing"}
 )
 
 
+
+--[[
+CALLBACK -- downloadSTL():
+
+	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
+--]]
 services.downloadSTL = function(me, headers, query, data)
     local rootPaths = "python3 /home/pi/testingSTL.py \""
     local url = data.onshapeURL
-    print(url)
-    print(rootPaths .. url .. "\"")
     local uploadCmd = io.popen(rootPaths .. url .. "\"")
     return 200, true
 end
 
 
-services.uploadGCODE = function(me, headers, query, data)
+
+--[[
+CALLBACK -- uploadFile():
+
+	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
+--]]
+services.uploadFile = function(me, headers, query, data)
     local rootPath = "/usr/bin/python /home/pi/testingFileDownload.py \""   
     local filename = data.filename
     local uploadCmd = io.popen(rootPath .. filename .. "\"")
@@ -47,19 +84,19 @@ services.uploadGCODE = function(me, headers, query, data)
 end
 
 
---services.Jog = function(me, headers, query, data)
---   local rootPath = "/usr/bin/python /home/pi/homeTest.py "
---   local axis = data.axis
---   local amnt = data.dist 
---   local jogCmd = io.popen(rootPath .. amnt .. " " .. axis)
---   return 200, true
---end
 
+--[[
+CALLBACK -- GetSystemProperties():
+
+	Uses the query Hardware function to update the Control Hub Remote Properties
+--]]
 services.GetSystemProperties = function(me, headers, query, data)
     queryHardware()
 --  if properties are successfully updated, return HTTP 200 code with a true service return value
     return 200, true
 end
+
+
 
 function queryHardware()
     local tempCmd = io.popen("/usr/bin/python /home/pi/tempStatus.py")
@@ -70,7 +107,6 @@ function queryHardware()
     s = string.match(s,"ExtrTemp=(%d+\.%d+)");
     properties.extr_temperature.value = s
     properties.extr_temperature.time = data.time;
-	-- UpdatePropertyValues("bed_temperature", s);
     local photoCmd = io.popen("/usr/bin/python /home/pi/encodeImage.py")
     s = photoCmd:read("*a")
     properties.remote_photo.value = s
