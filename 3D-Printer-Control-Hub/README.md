@@ -21,7 +21,7 @@ You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian 
 <br>
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D%20Printer%20Control%20Hub/images/raspbian-32bit.png" />
+  <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/tree/main/3D-Printer-Control-Hub/images" />
 </p>
 
 After flashing your sd card, boot up your Raspberry Pi on a monitor so that you are able to access the graphical user interface. Remember the default login on fresh Raspberry Pi images is **username/password: pi/raspberry**. From here connect to your WiFi network in order to start downloading the EMS and git repository. 
