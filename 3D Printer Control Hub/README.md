@@ -38,8 +38,14 @@ git clone "repository-url"
 ```
 ---
 
+<a name="ems"/>
 
-For the first package, you can download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is locked within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. At this point you should follow the steps 1 and 2 to get setup with the EMS into your Downloads folder. 
+## Installing EMS
+For the first package, you can download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is hosted within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. 
+
+This tutorial is a great walk through on how to setup your EMS, so we will follow through the tutorial, but pause occasionally to make a few steps easier.
+
+At this point you should follow the steps 1 and 2 to get setup with the EMS into your Downloads folder. 
 
 ```bash
 
