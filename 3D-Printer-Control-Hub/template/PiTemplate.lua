@@ -63,7 +63,7 @@ CALLBACK -- downloadSTL():
 	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
 --]]
 services.downloadSTL = function(me, headers, query, data)
-    local rootPaths = "python3 $HOME/scripts/testingSTL.py \""
+    local rootPaths = "/usr/bin/python $HOME/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/testingSTL.py \""
     local url = data.onshapeURL
     local uploadCmd = io.popen(rootPaths .. url .. "\"")
     return 200, true
@@ -77,7 +77,7 @@ CALLBACK -- uploadFile():
 	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
 --]]
 services.uploadFile = function(me, headers, query, data)
-    local rootPath = "/usr/bin/python /home/pi/testingFileDownload.py \""   
+    local rootPath = "/usr/bin/python $HOME/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/downloadFile.py \""   
     local filename = data.filename
     local uploadCmd = io.popen(rootPath .. filename .. "\"")
     return 200, true
@@ -99,7 +99,7 @@ end
 
 
 function queryHardware()
-    local tempCmd = io.popen("/usr/bin/python /home/pi/tempStatus.py")
+    local tempCmd = io.popen("/usr/bin/python $HOME/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/tempStatus.py")
     local s = tempCmd:read("*a")
     local d = string.match(s,"BedTemp=(%d+\.%d+)");
     properties.bed_temperature.value = d
@@ -107,7 +107,7 @@ function queryHardware()
     s = string.match(s,"ExtrTemp=(%d+\.%d+)");
     properties.extr_temperature.value = s
     properties.extr_temperature.time = data.time;
-    local photoCmd = io.popen("/usr/bin/python /home/pi/encodeImage.py")
+    local photoCmd = io.popen("/usr/bin/python $HOME/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/takeImage.py")
     s = photoCmd:read("*a")
     properties.remote_photo.value = s
 end
