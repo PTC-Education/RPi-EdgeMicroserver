@@ -1,6 +1,8 @@
 import requests
 import os
 
+def getTemps() -> bool: 
+
 base = "http://octopi.local"
 url = "/api/printer"
 query ="?apikey="
