@@ -34,8 +34,23 @@ Cd to your root folder
 cd 
 
 # Clone this repository to your root directory. 
-git clone "repository-url"
+git clone "https://github.com/PTC-Education/RPi-EdgeMicroserver.git"
 ```
+
+When cloning the repository you may have to enter your Github credentials, enter your username and password in order to authenticate the download command. Once completed, you can traverse to the **3D-Printer-Control-Hub** subfolder and investigate the folder structure. 
+
+```bash 
+cd RPi-EdgeMicroserver
+
+--- output folders ---
+
+template - stores the PiTemplate.lua for the Remote Thing
+
+scripts - stores all of the Python scripts driving the EMS connection
+
+----------------------
+```
+
 ---
 
 <a name="ems"/>
