@@ -98,8 +98,40 @@ From here you can continue and unzip folder, feel free to remove the downloaded 
 rm MED-61060-CD-054_SP9_Microserver-Linux-arm-hwfpu-openssl-5-4-6-1154.zip
 ```
 
+### Step 4. Configuring the EMS
 
+  In this step you are tasked to create a config.json file. A template config file has been place in this repository so you wil jsut have to edit the Thinworx Host and App Key information.
+  
+  ```bash
+  -- Move to the config folder 
+  cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/config/
+  
+  -- Copy the config.json file to the microserver configuration subfolder
+  cp config.json ~/microserver/etc
+  ```
+  
+ Open the config.json file and enter your information. Once completed you can progress to Step 5 of the tutorial. 
+ 
+### Step 5. Configuring Lua Script Resource
 
+```bash
+-- Move to the config folder 
+  cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/config/
+  
+  -- Copy the config.lua file to the microserver configuration subfolder
+  cp config.lua ~/microserver/etc
+```
+
+### Step 7. Configure Template File
+
+```bash
+  -- Move to the config folder 
+  cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/template/
+  
+  -- Copy the config.lua file to the microserver configuration subfolder
+  cp PiTemplate.lua ~/microserver/etc/custom/templates
+```
+  
 ---
 
 After completing the move to the root folder continue with the Thingworx Developer Portal until you get to step 4 in configuring your EMS. 
