@@ -77,6 +77,7 @@ echo $ONSHAPE_ACCESS_KEY
 echo $ONSHAPE_SECRET_KEY
 echo $OCTOPI_KEY
 ```
+Once our api keys have been verified we can download the EMS from the Thingworx Developer Portal and get started!
 
 ---
 
