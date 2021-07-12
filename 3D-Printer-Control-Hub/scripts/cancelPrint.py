@@ -3,6 +3,13 @@ import os
 import sys
 import json
 
+def getOctopiKey() -> str:
+    keys = []
+    with open('/home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt') as f:
+        keys = f.readlines()
+    f.close()
+    return keys[0]
+
 '''
 cancelPrint():
     Calls the Octoprint API from the EMS and
@@ -10,6 +17,8 @@ cancelPrint():
     services
 '''
 def cancelPrint() -> bool:
+    
+    key = getOctopiKey()
 
     # URL Componnents
     base = "http://octopi.local"
@@ -17,7 +26,7 @@ def cancelPrint() -> bool:
 
     # Defining the headers 
     headers = {
-        'X-Api-Key': os.getenv("OCTOPI_KEY"),
+        'X-Api-Key': key.strip('\n'),
         'Content-Type': "application/json"
         }
 

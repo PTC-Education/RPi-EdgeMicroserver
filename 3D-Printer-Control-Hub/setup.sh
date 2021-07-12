@@ -48,6 +48,9 @@ printf "   in order for changes to take effect\n\n"
 
 echo "-------------------------------------------"
 
+
+echo alias python='/usr/bin/python3.7' >> ~/.bashrc
+
 source ~/.bashrc
 
 sed -i '28,$d' ~/.profile

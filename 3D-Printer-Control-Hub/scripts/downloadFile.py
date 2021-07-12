@@ -5,6 +5,13 @@ import os
 
 from uploadFile import *
 
+def getTwxKey() -> str:
+    keys = []
+    with open('/home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt') as f:
+        keys = f.readlines()
+    f.close()
+    return keys[1]
+
 '''
 downloadFile():
     Inputs:
@@ -29,9 +36,11 @@ downloadFile():
 '''
 def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:bool = False) -> bool:
     
+    key = getTwxKey()
+    
     # Request Headers
     headers = {
-        "appKey":os.getenv('THINGWORX_KEY'),
+        "appKey":key.strip('\n'),
         "Content-Type":"application/json",
         "Accept":"application/json, */*"
     }

@@ -3,6 +3,14 @@ import os
 import sys
 import json
 
+def getOctopiKey() -> str:
+    keys = []
+    with open('/home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt') as f:
+        keys = f.readlines()
+    f.close()
+    return keys[0]
+
+
 '''
 preheatBed():
     Calls the Octoprint API from the EMS and
@@ -10,7 +18,9 @@ preheatBed():
     services
 '''
 def preheatBed(temperature:int) -> bool:
-
+    
+    key = getOctopiKey()
+    
     # Safety check so that the temperature is
     # not overloaded 
     if temperature > 70:
@@ -22,7 +32,7 @@ def preheatBed(temperature:int) -> bool:
 
     # Defining the headers 
     headers = {
-        'X-Api-Key': os.getenv("OCTOPI_KEY"),
+        'X-Api-Key': key.strip('\n'),
         'Content-Type': "application/json"
         }
 
@@ -51,4 +61,4 @@ def preheatBed(temperature:int) -> bool:
 
 targetTemp = sys.argv[1]
 
-preheatBed(targetTemp)
+preheatBed(int(targetTemp))

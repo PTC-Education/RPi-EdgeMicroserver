@@ -3,6 +3,13 @@ import binascii
 import sys
 import os
 
+def getOctopiKey() -> str:
+    keys = []
+    with open('/home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt') as f:
+        keys = f.readlines()
+    f.close()
+    return keys[0]
+
 '''
 uploadFileToOctoprint():
     Inputs:
@@ -23,7 +30,10 @@ uploadFileToOctoprint():
         
          i.e. .py, .txt, .gcode files 
 '''
-def uploadFileToOctoprint(fileName:str, fileContent:str) -> bool: 
+def uploadFileToOctoprint(fileName:str, fileContent:str) -> bool:
+    
+    key = getOctopiKey()
+    
     # Create a unique boundary for the form body
     boundary = binascii.hexlify(os.urandom(16)).decode('ascii')
     
@@ -46,7 +56,7 @@ def uploadFileToOctoprint(fileName:str, fileContent:str) -> bool:
 
     # Establish the headers and API key
     headers = {
-        'X-Api-Key': os.getenv('OCTOPI_KEY'),
+        'X-Api-Key': key.strip('\n'),
         'Content-Type': content_type,
         'Content-Length': str(sys.getsizeof(body))
         }
