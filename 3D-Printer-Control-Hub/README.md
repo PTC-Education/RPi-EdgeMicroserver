@@ -48,15 +48,17 @@ git clone "https://github.com/PTC-Education/RPi-EdgeMicroserver.git"
 When cloning the repository you may have to enter your Github credentials, enter your username and password in order to authenticate the download command. Once completed, you can traverse to the **3D-Printer-Control-Hub** subfolder and investigate the folder structure. 
 
 ```bash 
-cd RPi-EdgeMicroserver
+cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/
 
 ls
 
 --- output folders ---
 
-template - stores the PiTemplate.lua for the Remote Thing
+- template - stores the PiTemplate.lua for the Remote Thing
 
-scripts - stores all of the Python scripts driving the EMS connection
+- scripts - stores all of the Python scripts driving the EMS connection
+
+- images - assets for the readme documentation
 
 ----------------------
 ```
@@ -88,16 +90,49 @@ For the first package, you can download the Edge MicroServer from the [Edge Micr
 
 This tutorial is a great walk through on how to setup your EMS, so we will follow through the tutorial, but pause occasionally to make a few steps easier.
 
-At this point you should follow the steps 1 and 2 to get setup with the EMS into your Downloads folder. 
+On step 2 download the EMS .zip file and drag from the Downloads folder to the root folder one level up. 
+
+From here you can continue and unzip folder, feel free to remove the downloaded zip file with
+
+```bash 
+rm MED-61060-CD-054_SP9_Microserver-Linux-arm-hwfpu-openssl-5-4-6-1154.zip
+```
+
+### Step 4. Configuring the EMS
+
+  In this step you are tasked to create a config.json file. A template config file has been place in this repository so you wil jsut have to edit the Thinworx Host and App Key information.
+  
+  ```bash
+  -- Move to the config folder 
+  cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/config/
+  
+  -- Copy the config.json file to the microserver configuration subfolder
+  cp config.json ~/microserver/etc
+  ```
+  
+ Open the config.json file and enter your information. Once completed you can progress to Step 5 of the tutorial. 
+ 
+### Step 5. Configuring Lua Script Resource
 
 ```bash
-
-# Move to the downloads folder, if you are already not..
-cd ~/Downloads
-
-# Move the microserver to your root folder
-mv microserver ~
+-- Move to the config folder 
+  cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/config/
+  
+  -- Copy the config.lua file to the microserver configuration subfolder
+  cp config.lua ~/microserver/etc
 ```
+
+### Step 7. Configure Template File
+
+```bash
+  -- Move to the config folder 
+  cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/template/
+  
+  -- Copy the config.lua file to the microserver configuration subfolder
+  cp PiTemplate.lua ~/microserver/etc/custom/templates
+```
+  
+---
 
 After completing the move to the root folder continue with the Thingworx Developer Portal until you get to step 4 in configuring your EMS. 
 
