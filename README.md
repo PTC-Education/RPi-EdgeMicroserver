@@ -116,6 +116,26 @@ This section covers a high level overview of downloading files using the REST AP
 <a name="valuestreams"/>
 
 ## Valuestream Properties
-Creating a property that 
+Creating a property that logs its timestamp as well as value for input into a valuestream
+
+```lua
+
+-- Function that queries a python script for current printer bed and extruder temps
+
+function queryHardware()
+    
+    -- Call the Python script
+    local tempCmd = io.popen("/usr/bin/python $HOME/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/tempStatus.py")
+    local s = tempCmd:read("*a")
+    
+    -- Parse out the temperature value from the std output string
+    local d = string.match(s,"BedTemp=(%d+\.%d+)");
+    
+    -- Assign the value and time to the property for correct logging 
+    properties.bed_temperature.value = d
+    properties.bed_temperature.time = data.time;
+    
+end
+```
 
 ---
