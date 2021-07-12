@@ -146,5 +146,9 @@ source setup.sh
 
 By running this script you will be prompted to enter your Thingworx, Onshape, and Octoprint credentials. These credentials will be persistently stored in your environment variables, but you will need to close out of your current terminal window for changes to take effect. 
 
+--- 
+
+Running the Adafruit Blinka Script that installs blinka if you wish to use any Adafruit sensors, but also sets your system default to Python3 so that the LuaScript Resource 
+
 ---
 <a name="properties"/>
