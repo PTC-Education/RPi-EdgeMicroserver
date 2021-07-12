@@ -1,0 +1,21 @@
+{
+        "ws_servers":   [{
+                        "host": "Enter host here",
+                        "port": 443
+                }],
+        "appkey":       "Enter app key here",
+        "http_server":  {
+                "host": "127.0.0.1",
+                "port": 8080,
+                "use_default_certificate":  true,
+                "ssl":  false,
+                "authenticate": false
+        },
+        "logger":       {
+                "level": "INFO"
+        },
+        "certificates": {
+                "validate": false,
+                "disable_hostname_validation":  true
+        }
+}
