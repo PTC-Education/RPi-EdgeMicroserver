@@ -26,6 +26,14 @@ You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian 
 
 After flashing your sd card, boot up your Raspberry Pi on a monitor so that you are able to access the graphical user interface. Remember the default login on fresh Raspberry Pi images is **username/password: pi/raspberry**. From here connect to your WiFi network in order to start downloading the EMS and git repository. 
 
+Make sure that ssh is enabled on your new image by typing 
+
+```bash
+sudo raspi-config
+```
+
+Select Interface Options > SSH > Yes to enable ssh on your system
+
 In order to make sure that the EMS and custom python scripts can find each other we will place all of our files in the root directory. Now we are going to clone with repository into our root folder using the below bash commands.
 
 Cd to your root folder 
@@ -42,6 +50,8 @@ When cloning the repository you may have to enter your Github credentials, enter
 ```bash 
 cd RPi-EdgeMicroserver
 
+ls
+
 --- output folders ---
 
 template - stores the PiTemplate.lua for the Remote Thing
@@ -49,6 +59,23 @@ template - stores the PiTemplate.lua for the Remote Thing
 scripts - stores all of the Python scripts driving the EMS connection
 
 ----------------------
+```
+
+Now that you have the repository we need to load our app keys into our environment variables so that they will be accessible to all our driver python scripts. Included in the 3D-Printer-Control-Hub is a bash script, setup.sh, that should be run with the below command:
+
+```bash
+source setup.sh
+```
+
+By running this script you will be prompted to enter your Thingworx, Onshape, and Octoprint credentials. These credentials will be persistently stored in your environment variables, but you will need to close out of your current terminal window for changes to take effect. 
+
+Before moving on to the next steps lets make sure that we accurately set the environment variables. In a new termina window compare the results of printing out the variables with your input api keys to make sure everything was set correctly. 
+
+```bash
+echo $THINGWORX_KEY
+echo $ONSHAPE_ACCESS_KEY
+echo $ONSHAPE_SECRET_KEY
+echo $OCTOPI_KEY
 ```
 
 ---
