@@ -15,11 +15,6 @@
 
 This repository is broken down into LSR (Lua Script Resource) templates for configuring a Raspberry Pi RemoteThing. Below is a screenshot from the Thingworx Developer Portal tutorial outlining the complete communication structure from the Raspberry Pi to the Thingworx server.
 
-
-<p align="center">
-  <img src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/pi_ems_connections.png" />
-</p>
-
 ---
 ## High Level Communication Structure:
 
