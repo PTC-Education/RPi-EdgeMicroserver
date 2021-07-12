@@ -48,15 +48,17 @@ git clone "https://github.com/PTC-Education/RPi-EdgeMicroserver.git"
 When cloning the repository you may have to enter your Github credentials, enter your username and password in order to authenticate the download command. Once completed, you can traverse to the **3D-Printer-Control-Hub** subfolder and investigate the folder structure. 
 
 ```bash 
-cd RPi-EdgeMicroserver
+cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/
 
 ls
 
 --- output folders ---
 
-template - stores the PiTemplate.lua for the Remote Thing
+- template - stores the PiTemplate.lua for the Remote Thing
 
-scripts - stores all of the Python scripts driving the EMS connection
+- scripts - stores all of the Python scripts driving the EMS connection
+
+- images - assets for the readme documentation
 
 ----------------------
 ```
@@ -88,16 +90,17 @@ For the first package, you can download the Edge MicroServer from the [Edge Micr
 
 This tutorial is a great walk through on how to setup your EMS, so we will follow through the tutorial, but pause occasionally to make a few steps easier.
 
-At this point you should follow the steps 1 and 2 to get setup with the EMS into your Downloads folder. 
+On step 2 download the EMS .zip file and drag from the Downloads folder to the root folder one level up. 
 
-```bash
+From here you can continue and unzip folder, feel free to remove the downloaded zip file with
 
-# Move to the downloads folder, if you are already not..
-cd ~/Downloads
-
-# Move the microserver to your root folder
-mv microserver ~
+```bash 
+rm MED-61060-CD-054_SP9_Microserver-Linux-arm-hwfpu-openssl-5-4-6-1154.zip
 ```
+
+
+
+---
 
 After completing the move to the root folder continue with the Thingworx Developer Portal until you get to step 4 in configuring your EMS. 
 
