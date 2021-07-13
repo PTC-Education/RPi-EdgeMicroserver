@@ -16,14 +16,19 @@ our printer's information from anywhere without worrying about port forwarding.
 ---
 
 
+
+
+
 <a name="raspbian"/>
 
-<details close>
+<details open>
 <summary>Installing Raspbian</summary>
 <br>
+  
 Instead of hosting a precompiled image, we are going to go through the steps to build your own custom image on the Raspberry Pi.
 
 You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian OS onto a new SD card. After downloading the Raspberry Pi imager and selecting the correct os, you will see the below image. Click **Write** when ready.
+  
 <br>
 
 <p align="center">
@@ -31,6 +36,7 @@ You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian 
 </p>
 
 After flashing the SD card, boot the Raspberry Pi while connected to a monitor so that you are able to access the graphical user interface. Remember the default login on fresh Raspberry Pi images is **username/password: pi/raspberry**. 
+  
 <br>
 
 From here connect to your WiFi network and ensure that ssh is enabled on your new image by typing 
@@ -43,17 +49,20 @@ Select Interface Options > SSH > Yes to enable ssh on your system
 
 </details>  
 
-<a name="python3" />
+
+
+<a name="python3"/>
 
 
 <details close>
-  <summary>Setting Python3 as Default Interpreter</summary>
-  <br>
+  <summary>Python3 Default Setup</summary>
+<br>
+  
 The core of this printer control application is built off of a series of python3 scripts that are called via callback functions in our predefined services. In order for the EMS to accurately call these scripts we must ensure that the Raspberry Pi is setup to call python3 on default. 
-    
-In order to do this we will make use of a script made by Adafruit [linked here](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
-     
-The below commands will install the libraries for adafruit sensors and also set the default to python3. Answer yes to the prompts and wait for the process to complete
+
+<br>
+  
+In order to do this we will make use of a script made by Adafruit. The below commands will install the libraries for adafruit sensors and also set the default to python3. Answer yes to the prompts and wait for the process to complete
     
 ```bash
 cd ~
@@ -61,9 +70,6 @@ sudo pip3 install --upgrade adafruit-python-shell
 wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
 sudo python3 raspi-blinka.py
 ```
-
-Once completed move on to the next step in the tutorial.
-    
 </details>
 
 
@@ -138,7 +144,7 @@ Once our api keys have been verified we can move on to install the Edge Microser
 <a name="ems"/>
 
 <details close>
-## Installing EMS
+  <summary>Installing EMS</summary>
 For the first package, you can download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is hosted within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. 
 
 This tutorial is a great walk through on how to setup your EMS, so we will follow through the tutorial, but pause occasionally to make a few steps easier.
