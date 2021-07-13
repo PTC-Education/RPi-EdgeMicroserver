@@ -1,4 +1,6 @@
-rm /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+source ~/.bashrc
+
+sed -i '114,$d' ~/.bashrc # Cleanup all of the variables initalized before
 
 echo "--------------------------------------------"
 echo "|           Edge Microserver Setup         |"
@@ -13,23 +15,28 @@ printf " Input your keys and host url\n"
 printf " to be stored in environment variables\n\n"
 
 printf  "   Enter Thingworx API Key: "
-read tx_key
+read -s tx_key
 printf "\n\n"
-echo $tx_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+echo export THINGWORX_KEY=$tx_key >> ~/.bashrc
+
+printf "    Enter Thingworx Host: "
+read -s tx_host
+printf "\n\n"
+echo export THINGWORX_HOST=$tx_host >> ~/.bashrc
 
 printf "   Enter Onshape Access Key: "
-read onshape_access_key
+read -s onshape_access_key
 printf "\n\n"
-echo $onshape_access_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+echo export ONSHAPE_ACCESS_KEY=$onshape_access_key >> ~/.bashrc
 
 printf "   Enter Onshape Secret Key: "
-read onshape_secret_key
+read -s onshape_secret_key
 printf "\n\n"
-echo $onshape_secret_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+echo export ONSHAPE_SECRET_KEY=$onshape_secret_key >> ~/.bashrc
 
 printf "   Enter Octoprint API Key: "
-read octopi_key
-echo $octopi_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+read -s octopi_key
+echo export OCTOPI_KEY=$octopi_key >> ~/.bashrc
 
 printf "\n\n"
 echo "-------------------------------------------"
@@ -41,3 +48,13 @@ printf "   in order for changes to take effect\n\n"
 
 echo "-------------------------------------------"
 
+
+echo alias python='/usr/bin/python3.7' >> ~/.bashrc
+
+source ~/.bashrc
+
+sed -i '28,$d' ~/.profile
+
+echo "if [ -n \"\$BASH_VERSION\" ] && [ -f \$HOME/.bashrc ]; then" >> ~/.profile
+echo   "source \$HOME/.bashrc" >> ~/.profile
+echo "fi" >> ~/.profile
