@@ -4,6 +4,8 @@
 
 ### Table of Contents  
 * [Installing Raspbian](#raspbian)
+* [Cloning the Repository](#printerControl)
+* [Setting up API Keys](#keys)
 * [Installing EMS](#ems)
 * [Generating Credential Environment Variables](#credentials)
 * [Running the Edge MicroServer](#run) 
@@ -12,9 +14,13 @@ Following this guide on a fresh install of Raspbian will allow the user to conne
 our printer's information from anywhere without worrying about port forwarding. 
 
 ---
+
+
 <a name="raspbian"/>
 
-## Installing Raspbian
+<details close>
+<summary>Installing Raspbian</summary>
+<br>
 Instead of hosting a precompiled image, we are going to go through the steps to build your own custom image on the Raspberry Pi.
 
 You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian OS onto a new SD card. After downloading the Raspberry Pi imager and selecting the correct os, you will see the below image. Click **Write** when ready.
@@ -24,9 +30,10 @@ You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian 
   <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/raspbian-32bit.png" />
 </p>
 
-After flashing your sd card, boot up your Raspberry Pi on a monitor so that you are able to access the graphical user interface. Remember the default login on fresh Raspberry Pi images is **username/password: pi/raspberry**. From here connect to your WiFi network in order to start downloading the EMS and git repository. 
+After flashing the SD card, boot the Raspberry Pi while connected to a monitor so that you are able to access the graphical user interface. Remember the default login on fresh Raspberry Pi images is **username/password: pi/raspberry**. 
+<br>
 
-Make sure that ssh is enabled on your new image by typing 
+From here connect to your WiFi network and ensure that ssh is enabled on your new image by typing 
 
 ```bash
 sudo raspi-config
@@ -34,9 +41,18 @@ sudo raspi-config
 
 Select Interface Options > SSH > Yes to enable ssh on your system
 
-In order to make sure that the EMS and custom python scripts can find each other we will place all of our files in the root directory. Now we are going to clone with repository into our root folder using the below bash commands.
+</details>  
 
-Cd to your root folder 
+
+
+
+<a name="printerControl" />
+
+<details close> 
+  <summary>Cloning the Repository</summary>
+  <br>
+
+In order to make sure that the EMS and custom python scripts can find each other we will place all of our files in the root directory. Now we are going to clone with repository into our root folder using the below bash commands.
 ```bash
 # Move to your root directory
 cd 
@@ -52,39 +68,53 @@ cd RPi-EdgeMicroserver/3D-Printer-Control-Hub/
 
 ls
 
---- output folders ---
+# --- output folders ---
 
-- template - stores the PiTemplate.lua for the Remote Thing
+# - template - stores the PiTemplate.lua for the Remote Thing
 
-- scripts - stores all of the Python scripts driving the EMS connection
+# - scripts - stores all of the Python scripts driving the EMS connection
 
-- images - assets for the readme documentation
+# - images - assets for the readme documentation
 
 ----------------------
 ```
+</details>
 
-Now that you have the repository we need to load our app keys into our environment variables so that they will be accessible to all our driver python scripts. Included in the 3D-Printer-Control-Hub is a bash script, setup.sh, that should be run with the below command:
+
+
+
+
+<a name="keys" /> 
+
+<details close>
+  <summary>Setting up Keys</summary>
+  
+Now that the repository has been downloaded we need to load our app keys into a keys.txt so that they will be accessible to the EMS when it is monitoring our printer instance. Included in the 3D-Printer-Control-Hub is a bash script, setup.sh, that should be run with the below command:
 
 ```bash
-source setup.sh
+bash setup.sh
 ```
 
-By running this script you will be prompted to enter your Thingworx, Onshape, and Octoprint credentials. These credentials will be persistently stored in your environment variables, but you will need to close out of your current terminal window for changes to take effect. 
+By running this script you will be prompted to enter your Thingworx, Onshape, and Octoprint credentials. These credentials will be persistently stored in the security folder of this repository in keys.txt
 
-Before moving on to the next steps lets make sure that we accurately set the environment variables. In a new termina window compare the results of printing out the variables with your input api keys to make sure everything was set correctly. 
+Before moving on to the next steps lets make sure that we accurately wrote out the api keys to the keys.txt file. In a new terminal window enter the below commands to view and verify the generated keys.txt file.
 
 ```bash
-echo $THINGWORX_KEY
-echo $ONSHAPE_ACCESS_KEY
-echo $ONSHAPE_SECRET_KEY
-echo $OCTOPI_KEY
+cd
+  
+sudo nano RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
 ```
-Once our api keys have been verified we can download the EMS from the Thingworx Developer Portal and get started!
+Once our api keys have been verified we can move on to install the Edge Microserver
 
----
+</details>
+
+
+
+
 
 <a name="ems"/>
 
+<details close>
 ## Installing EMS
 For the first package, you can download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is hosted within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. 
 
@@ -145,10 +175,10 @@ source setup.sh
 ```
 
 By running this script you will be prompted to enter your Thingworx, Onshape, and Octoprint credentials. These credentials will be persistently stored in your environment variables, but you will need to close out of your current terminal window for changes to take effect. 
-
---- 
-
-Running the Adafruit Blinka Script that installs blinka if you wish to use any Adafruit sensors, but also sets your system default to Python3 so that the LuaScript Resource 
-
 ---
+  
+</details>
+
+
+
 <a name="properties"/>
