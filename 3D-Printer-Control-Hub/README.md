@@ -43,14 +43,37 @@ Select Interface Options > SSH > Yes to enable ssh on your system
 
 </details>  
 
+<a name="python3" />
+
+
+<details close>
+  <summary>Setting Python3 as Default Interpreter</summary>
+  <br>
+The core of this printer control application is built off of a series of python3 scripts that are called via callback functions in our predefined services. In order for the EMS to accurately call these scripts we must ensure that the Raspberry Pi is setup to call python3 on default. 
+    
+In order to do this we will make use of a script made by Adafruit [linked here](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)
+     
+The below commands will install the libraries for adafruit sensors and also set the default to python3. Answer yes to the prompts and wait for the process to complete
+    
+```bash
+cd ~
+sudo pip3 install --upgrade adafruit-python-shell
+wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
+sudo python3 raspi-blinka.py
+```
+
+Once completed move on to the next step in the tutorial.
+    
+</details>
+
 
 
 
 <a name="printerControl" />
 
 <details close> 
-  <summary>Cloning the Repository</summary>
-  <br>
+<summary>Cloning the Repository</summary>
+<br>
 
 In order to make sure that the EMS and custom python scripts can find each other we will place all of our files in the root directory. Now we are going to clone with repository into our root folder using the below bash commands.
 ```bash
