@@ -11,58 +11,53 @@ properties.extr_temperature={baseType="NUMBER", pushType="ALWAYS", value=0}
 properties.remote_photo={baseType="IMAGE", pushType="ALWAYS", value =0}
 
 
+
 --[[ 
 GetSystemProperties(): 
-	Define the GetSystemProperties service 
-
+	GetSystemProperties service defintion
 	Output - Boolean, if True, 200 
 			  else False, 400
 --]]
 serviceDefinitions.GetSystemProperties(
     output { baseType="BOOLEAN", description="" },
-    description { "updates properties" }
+    description { "Updates Properties for PrinterControlThing" }
 )
 
 
 --[[ 
 PreheatBed():
-        uploadFile service definition
-
-        Input  - filename, STRING, filename in file repository
-                 repository, STRING, name of a Thingworx File Repository
+	PreheatBed service definition
+        Input  - temperature, NUMBER, value of the target bed temperature
         Output - Boolean, if True, 200 
                           else False, 400
 --]]
 serviceDefinitions.PreheatBed(
    input { name="temperature", baseType="NUMBER", description="target bed temperature" },
    output { baseType="BOOLEAN", description="" },
-   description { "Service Preheats the Bed" }
+   description { "Preheat the Bed" }
 )
 
 
 --[[ 
 PreheatExtruder():
-        uploadFile service definition
-
-        Input  - filename, STRING, filename in file repository
-                 repository, STRING, name of a Thingworx File Repository
+        PreheatExtruder service defintion
+        Input  - temperature, NUMBER, value of the target extruder temperature
         Output - Boolean, if True, 200 
                           else False, 400
 --]]
 serviceDefinitions.PreheatExtruder(
    input { name="temperature", baseType="NUMBER", description="target extruder temperature" },
    output { baseType="BOOLEAN", description="" },
-   description { "Service Preheats the Extruder" }
+   description { "Preheat the Extruder" }
 )
 
 
 
 --[[ 
 JogPrinthead():
-        uploadFile service definition
-
-        Input  - filename, STRING, filename in file repository
-                 repository, STRING, name of a Thingworx File Repository
+        JogPrinthead service definition
+        Input  - distance, NUMBER, the distance to jog the printhead
+                 axis, STRING, the axis to be jogged
         Output - Boolean, if True, 200 
                           else False, 400
 --]]
@@ -75,14 +70,16 @@ serviceDefinitions.JogPrinthead(
 
 
 
---[[
-	cancelPrint():
+--[[ 
+CancelPrint():
+        CancelPrint service definition
+        Output - Boolean, if True, 200 
+                          else False, 400
 --]]
 serviceDefinitions.CancelPrint(
   output { baseType="BOOLEAN", description="" },
   description { "Cancel the print" }
 )
-
 
 
 
@@ -123,6 +120,11 @@ serviceDefinitions.downloadSTL(
 
 
 --[[
+------------------------------------------ CALLBACK FUNCTIONS ------------------------------------------------
+--]]
+
+
+--[[
 CALLBACK -- downloadSTL():
 
 	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
@@ -135,6 +137,7 @@ services.downloadSTL = function(me, headers, query, data)
     return 200, true
 end
 --]]
+
 
 
 --[[
@@ -154,8 +157,7 @@ end
 
 --[[
 CALLBACK -- GetSystemProperties():
-
-	Uses the query Hardware function to update the Control Hub Remote Properties
+	Uses the Query Hardware function to update the Control Hub Remote Properties
 --]]
 services.GetSystemProperties = function(me, headers, query, data)
     queryHardware()
@@ -164,7 +166,8 @@ end
 
 
 --[[ 
-	preheatBed()
+CALLBACK -- preheatBed():
+	Calls the preheatBed.py script to preheat to the specified temperature
 --]]
 services.PreheatBed = function(me, headers, query, data)
    local rootPath = "/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/preheatBed.py \""
@@ -176,7 +179,8 @@ end
 
 
 --[[ 
-	preheatExtruder()
+CALLBACK -- preheatExtruder():
+	Calls the preheatExtruder.py script to preheat to the specified temeprature
 --]]
 services.PreheatExtruder = function(me, headers, query, data)
    local rootPath = "/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/preheatExtruder.py \""
@@ -187,7 +191,8 @@ end
 
 
 --[[ 
-	jogPrinthead()
+CALLBACK -- JogPrinthead():
+	Calls the jogPrinthead.py script to jog the printhead on the 3D printer
 --]]
 services.JogPrinthead = function(me, headers, query, data)
    local rootPath = "/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/jogPrinthead.py \""
@@ -199,7 +204,8 @@ end
 
 
 --[[
-	cancelPrint()
+CALLBACK -- CancelPrint():
+	Calls the cancelPrint.py script to cancel the print on the Octopi
 --]]
 services.CancelPrint = function(me, headers, query, data)
    local rootPath = "/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/cancelPrint.py"
