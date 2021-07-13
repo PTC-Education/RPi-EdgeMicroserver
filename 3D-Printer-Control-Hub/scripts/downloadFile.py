@@ -2,6 +2,7 @@ import requests
 import binascii
 import sys
 import os
+import time
 
 from uploadFile import *
 
@@ -37,7 +38,7 @@ downloadFile():
 def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:bool = False) -> bool:
     
     key = getTwxKey()
-    
+    print(key.strip('\n'))
     # Request Headers
     headers = {
         "appKey":key.strip('\n'),
@@ -46,7 +47,7 @@ def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:boo
     }
     
     # Request URL Parameters
-    host = os.getenv('THINGWORX_HOST')
+    host = "https://pp-2101111403aw.portal.ptc.io"
     path = "/Thingworx/FileRepositoryDownloader"
     repositoryQuery = "?download-repository="
     fileQuery = "&download-path=/"
@@ -56,6 +57,7 @@ def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:boo
     
     try:
         r = requests.request("GET", url, headers = headers, allow_redirects=True)
+        time.sleep(0.1)
         if (save):
             file = open(fileName, "w")
             file.write(r.text)
@@ -63,7 +65,8 @@ def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:boo
         if (upload):
             uploadFileToOctoprint(fileName, r.text)
         return True
-    except:
+    except (BrokenPipeError, IOError):
+        pass
         return False
     
     
@@ -72,4 +75,4 @@ def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:boo
 fileName = sys.argv[1]
 fileRepository = sys.argv[2]
  
-downloadFile(fileName, fileRepository, save = True, upload = True)
+downloadFile(fileName, fileRepository, save = False, upload = True)

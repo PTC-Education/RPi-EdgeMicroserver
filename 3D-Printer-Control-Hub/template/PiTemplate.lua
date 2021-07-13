@@ -92,9 +92,9 @@ uploadFile():
 	Output - Boolean, if True, 200 
 			  else False, 400
 --]]
-serviceDefinitions.uploadFile(
+serviceDefinitions.UploadFile(
     input {name="filename", baseType="STRING", description="filename in File Repository"},
-    input {name="repository", baseType="STRING", description="repository name in Thingworx Server"},
+    input {name="store", baseType="STRING", description="repository name in Thingworx Server"},
     output {baseType="BOOLEAN", description=""},
     description {"Add custom gcode to text box and it will send to your 3D printer"} 
 )
@@ -145,12 +145,11 @@ CALLBACK -- uploadFile():
 
 	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
 --]]
-services.uploadFile = function(me, headers, query, data)
+services.UploadFile = function(me, headers, query, data)
     local rootPath = "/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/downloadFile.py \""   
-    local filename = data.filename
-    local repository = data.repository
-    print(rootPath .. filename .. "\" \"" .. repository "\"")
-    --local uploadCmd = io.popen(rootPath .. filename .. "\" \"" .. repository "\"")
+    local filename = data.filename .. "\" \""
+    local repository = data.store .. "\""
+    local uploadCmd = io.popen(rootPath .. filename .. repository)
     return 200, true
 end
 
@@ -214,19 +213,26 @@ services.CancelPrint = function(me, headers, query, data)
 end
 
 
+--[[
+HELPER FUNCTION -- queryHardware()
+--]]
 function queryHardware()
 
-    local tempCmd = io.popen("/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/getTemps.py \"\$OCTOPI_KEY\"")
+    local tempCmd = io.popen("/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/getTemps.py")
     local s = tempCmd:read("*a")
+    
     local d = string.match(s,"BedTemp=(%d+\.%d+)");
     properties.bed_temperature.value = d
     properties.bed_temperature.time = data.time;
+   
     s = string.match(s,"ExtrTemp=(%d+\.%d+)");
     properties.extr_temperature.value = s
     properties.extr_temperature.time = data.time;
+    
     local photoCmd = io.popen("/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/takePhoto.py")
     s = photoCmd:read("*a")
     properties.remote_photo.value = s
+
 end
 
 
