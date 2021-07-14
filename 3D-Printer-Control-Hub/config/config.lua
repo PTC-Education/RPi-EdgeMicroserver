@@ -1,7 +1,7 @@
 scripts.log_level = "INFO"
 scripts.script_resource_ssl = false
 scripts.script_resource_authenticate = false
-scripts.PiThing = {
+scripts.NAMEHERE = {
     file = "thing.lua",
     template = "PiTemplate",
     scanRate = 1000,
