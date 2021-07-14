@@ -275,13 +275,31 @@ cd ~
 # Move to correct place for copying
 sudo nano microserver/etc/config.lua
 ```
+Upon completion you will see the file contents, in which you will have to modify the NAMEHERE with the name of your desired remote thing. 
+ 
+```lua
+scripts.log_level = "INFO"
+scripts.script_resource_ssl = false
+scripts.script_resource_authenticate = false
+scripts.NAMEHERE = {
+    file = "thing.lua",
+    template = "PiTemplate",
+    scanRate = 1000,
+    taskRate = 30000
+}
+scripts.rap_host = "127.0.0.1"
+scripts.rap_port = 8080
+```
+For example, if I wanted my RemoteThing to appear as "PrinterControlThing" on the Thingworx server, I would replace the line with NAMEHERE with
   
+```lua
+scripts.PrinterControlThing = {
+```  
 </p>
 <p>
-At this point in the tutorial return to Steps 5 and 7 to start the EMS and LuascriptResource. Once all 
+Once you have modified the config.json and config.lua files at this point in the tutorial return to Steps 5 and 7 to start the EMS and LuascriptResource. Continue to the end of the tutorial using the new Thing name that you modified on the config.lua file and your RemoteThing will be up and running!
 </p>
 </details>
-
 
 
 <a name="properties"/>
