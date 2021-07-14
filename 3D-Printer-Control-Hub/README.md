@@ -43,6 +43,7 @@ After flashing the SD card, boot the Raspberry Pi while connected to a monitor s
 <p>
 From here connect to your WiFi network and ensure that ssh is enabled on your new image by typing 
 </p>
+  
 ```bash
 sudo raspi-config
 ```
@@ -151,22 +152,26 @@ Once our api keys have been verified we can move on to install the Edge Microser
 
 <details close>
   <summary>Installing EMS</summary>
+<p>
+  When installing the Edge Microserver, we are going to build off the existing tutorial posted on the Thingworx Developer Portal, which can be found here <a href="https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart">Edge Microserver Tutorial</a>. In order to access the Thingworx Developer portal you must create an account. 
+</p>
   
-For the first package, you can download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is hosted within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. 
-
-This tutorial is a great walk through on how to setup your EMS, so we will follow through the tutorial, but pause occasionally to make a few steps easier.
-
+<p> 
+The next steps in the guide will be broken down by need to modify. 
+  
+<h3>Step 1</h3>
+  
 On step 2 download the EMS .zip file and drag from the Downloads folder to the root folder one level up. 
 
 From here you can continue and unzip folder, feel free to remove the downloaded zip file with
-
+</p>
 ```bash 
 rm MED-61060-CD-054_SP9_Microserver-Linux-arm-hwfpu-openssl-5-4-6-1154.zip
 ```
 
 ### Step 4. Configuring the EMS
 
-  In this step you are tasked to create a config.json file. A template config file has been place in this repository so you wil jsut have to edit the Thinworx Host and App Key information.
+  In this step you are tasked to create a config.json file. A template config file has been place in this repository so you wil jsut have to edit the Thinworx Host and App Key information. 
   
   ```bash
   -- Move to the config folder 
