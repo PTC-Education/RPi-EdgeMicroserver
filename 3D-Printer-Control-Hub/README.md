@@ -82,6 +82,22 @@ wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/m
 sudo python3 raspi-blinka.py
 ```
   
+If you run into issues downloading this script enter the below commands
+  
+```bash
+# End execution of the download
+^C
+
+# Reboot the system
+reboot
+
+# In new terminal after system reboot
+sudo dpkg --configure -a
+
+# Rerun installation
+sudo pyhon3 raspi-blinka.py
+```
+  
 ---  
   
 </details>
