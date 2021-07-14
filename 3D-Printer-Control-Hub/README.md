@@ -51,18 +51,18 @@ Select Interface Options > SSH > Yes to enable ssh on your system
 
 
 
+
 <a name="python3"/>
 
-
 <details close>
-  <summary>Python3 Default Setup</summary>
+<summary>Python3 Default Setup</summary>
 <br>
   
 The core of this printer control application is built off of a series of python3 scripts that are called via callback functions in our predefined services. In order for the EMS to accurately call these scripts we must ensure that the Raspberry Pi is setup to call python3 on default. 
 
 <br>
   
-In order to do this we will make use of a script made by Adafruit. The below commands will install the libraries for adafruit sensors and also set the default to python3. Answer yes to the prompts and wait for the process to complete
+In order to do this we will make use of a script made by Adafruit. The below commands will install the libraries for adafruit sensors and also set the default to python3. Answer **YES** to the prompts and wait for the process to complete.
     
 ```bash
 cd ~
@@ -102,6 +102,8 @@ ls
 # - template - stores the PiTemplate.lua for the Remote Thing
 
 # - scripts - stores all of the Python scripts driving the EMS connection
+  
+# - config - stores the EMS and LuascriptResource information for the Printer Control Thing setup.
 
 # - images - assets for the readme documentation
 
@@ -133,7 +135,7 @@ cd
   
 sudo nano RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
 ```
-Once our api keys have been verified we can move on to install the Edge Microserver
+Once our api keys have been verified we can move on to install the Edge Microserver.
 
 </details>
 
@@ -145,6 +147,7 @@ Once our api keys have been verified we can move on to install the Edge Microser
 
 <details close>
   <summary>Installing EMS</summary>
+  
 For the first package, you can download the Edge MicroServer from the [Edge MicroServer Download](https://developer.thingworx.com/resources/guides/thingworx-raspberry-pi-quickstart) link. The download is hosted within the Thingworx Developer Portal, so you will need to make an account and find the download link inside. 
 
 This tutorial is a great walk through on how to setup your EMS, so we will follow through the tutorial, but pause occasionally to make a few steps easier.
