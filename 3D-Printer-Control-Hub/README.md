@@ -35,18 +35,20 @@ You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian 
   <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/raspbian-32bit.png" />
 </p>
 
+<p>
 After flashing the SD card, boot the Raspberry Pi while connected to a monitor so that you are able to access the graphical user interface. Remember the default login on fresh Raspberry Pi images is **username/password: pi/raspberry**. 
-  
+</p>
 <br>
 
+<p>
 From here connect to your WiFi network and ensure that ssh is enabled on your new image by typing 
-
+</p>
 ```bash
 sudo raspi-config
 ```
-
+<p>
 Select Interface Options > SSH > Yes to enable ssh on your system
-
+</p>
 </details>  
 
 
