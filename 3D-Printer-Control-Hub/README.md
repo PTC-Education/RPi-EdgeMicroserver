@@ -107,6 +107,8 @@ ls
   
 # - config - stores the EMS and LuascriptResource information for the Printer Control Thing setup.
 
+# - security - contains the keys.txt file to store the users credentials
+
 # - images - assets for the readme documentation
 
 ----------------------
