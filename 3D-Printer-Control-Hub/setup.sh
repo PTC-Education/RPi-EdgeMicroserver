@@ -12,6 +12,11 @@ echo "-------------------------------------------"
 printf " Input your keys and host url\n"
 printf " to be stored in environment variables\n\n"
 
+printf "   Enter Octoprint API Key: "
+read octopi_key
+printf "\n\n"
+echo $octopi_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+
 printf  "   Enter Thingworx API Key: "
 read tx_key
 printf "\n\n"
@@ -27,11 +32,6 @@ read onshape_secret_key
 printf "\n\n"
 echo $onshape_secret_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
 
-printf "   Enter Octoprint API Key: "
-read octopi_key
-echo $octopi_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
-
-printf "\n\n"
 echo "-------------------------------------------"
 printf "\n"
 printf "      All API keys have been stored!\n\n"
