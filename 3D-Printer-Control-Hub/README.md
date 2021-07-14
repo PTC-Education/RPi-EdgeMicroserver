@@ -243,16 +243,44 @@ sudo nano microserver/etc/config.json
 Upon opening you will see
   
 ```json
-
-  
+{
+        "ws_servers":   [{
+                        "host": "Enter host here",
+                        "port": 443
+                }],
+        "appkey":       "Enter app key here",
+        "http_server":  {
+                "host": "127.0.0.1",
+                "port": 8080,
+                "use_default_certificate":  true,
+                "ssl":  false,
+                "authenticate": false
+        },
+        "logger":       {
+                "level": "INFO"
+        },
+        "certificates": {
+                "validate": false,
+                "disable_hostname_validation":  true
+        }
+}
 ```  
-</details>
+Enter your Thingworx host url in the "host" field and and appkey in the "appkey" field. At this point your EMS will be configured for connection.
+
+You will also need to alter the config.lua file with a unique name for your Thingworx server. Enter the follow bash commands to access the copied config.lua file.
+  
+```bash
+cd ~
+  
+# Move to correct place for copying
+sudo nano microserver/etc/config.lua
+```
   
 </p>
 <p>
 At this point in the tutorial return to Steps 5 and 7 to start the EMS and LuascriptResource. Once all 
 </p>
-
+</details>
 
 
 
