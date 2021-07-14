@@ -24,11 +24,11 @@ our printer's information from anywhere without worrying about port forwarding.
 <details open>
 <summary>Installing Raspbian</summary>
 <br>
-  
+<p>
 Instead of hosting a precompiled image, we are going to go through the steps to build your own custom image on the Raspberry Pi.
 
 You will need to download the Raspberry Pi Imager and flash the 32-Bit Raspbian OS onto a new SD card. After downloading the Raspberry Pi imager and selecting the correct os, you will see the below image. Click **Write** when ready.
-  
+</p>
 <br>
 
 <p align="center">
