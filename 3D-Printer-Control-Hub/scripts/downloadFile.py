@@ -6,12 +6,12 @@ import time
 
 from uploadFile import *
 
-def getTwxKey() -> str:
+def getTwxCreds() -> str:
     keys = []
     with open('/home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt') as f:
         keys = f.readlines()
     f.close()
-    return keys[1]
+    return keys[1], keys[2]
 
 '''
 downloadFile():
@@ -37,17 +37,16 @@ downloadFile():
 '''
 def downloadFile(fileName:str, fileRepository:str, save:bool = False, upload:bool = False) -> bool:
     
-    key = getTwxKey()
-    print(key.strip('\n'))
+    appkey, thwrxHost = getTwxCreds()
     # Request Headers
     headers = {
-        "appKey":key.strip('\n'),
+        "appKey":appkey.strip('\n'),
         "Content-Type":"application/json",
         "Accept":"application/json, */*"
     }
     
     # Request URL Parameters
-    host = "https://pp-2101111403aw.portal.ptc.io"
+    host = "https://" + thwrxHost.strip('\n')
     path = "/Thingworx/FileRepositoryDownloader"
     repositoryQuery = "?download-repository="
     fileQuery = "&download-path=/"

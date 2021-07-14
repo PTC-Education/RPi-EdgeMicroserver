@@ -22,6 +22,11 @@ read tx_key
 printf "\n\n"
 echo $tx_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
 
+printf  "   Enter Thingworx Host: "
+read tx_host
+printf "\n\n"
+echo $tx_host >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+
 printf "   Enter Onshape Access Key: "
 read onshape_access_key
 printf "\n\n"

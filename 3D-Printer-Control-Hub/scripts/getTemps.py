@@ -23,7 +23,7 @@ def getTemps() -> bool:
     url = "/api/printer"
 
     key = getOctopiKey()
-
+    print(key.strip('\n'))
     # Defining the headers 
     headers = {
         'X-Api-Key': key.strip('\n'),
@@ -31,23 +31,26 @@ def getTemps() -> bool:
         }
     # Defining request parameters
     params = {}
-    try:
-        response = requests.request("GET",
-                                    base+url,
-                                    params=params,
-                                    headers=headers)
-        prntrStatus = response.json()
-        bedTemp = prntrStatus['temperature']['bed']['actual']
-        extrTemp = prntrStatus['temperature']['tool0']['actual']
-        print('BedTemp={0:0.1f} ExtrTemp={1:0.1f}'.format(bedTemp,extrTemp))
-        return True
+    #try:
+    response = requests.request("GET",
+                                base+url,
+                                params=params,
+                                headers=headers)
+    print(response)
+    print(response.text)
+    prntrStatus = response.json()
+    bedTemp = prntrStatus['temperature']['bed']['actual']
+    extrTemp = prntrStatus['temperature']['tool0']['actual']
+    print('BedTemp={0:0.1f} ExtrTemp={1:0.1f}'.format(bedTemp,extrTemp))
+    return True
+    '''
     except:
         #print('Request Failed');
         extrTemp = 0
         bedTemp = 0
         print('BedTemp={0:0.1f} ExtrTemp={1:0.1f}'.format(bedTemp,extrTemp))
         return False
-
+    '''
 
 getTemps()
 
