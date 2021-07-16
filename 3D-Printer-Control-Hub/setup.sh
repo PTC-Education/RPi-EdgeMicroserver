@@ -27,15 +27,24 @@ read tx_host
 printf "\n\n"
 echo $tx_host >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
 
+rm /home/pi/.onshape_client_config.yaml
+
+echo prod_api_keys: >> /home/pi/.onshape_client_config.yaml
+echo "base_url: \"https://cad.onshape.com\"" >> /home/pi/.onshape_client_config.yaml
+
+
 printf "   Enter Onshape Access Key: "
 read onshape_access_key
 printf "\n\n"
-echo $onshape_access_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
 
 printf "   Enter Onshape Secret Key: "
 read onshape_secret_key
 printf "\n\n"
-echo $onshape_secret_key >> /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/security/keys.txt
+
+echo "  secret_key: \"$onshape_secret_key\"" >> /home/pi/.onshape_client_config.yaml
+echo "  access_key: \"$onshape_access_key\"" >> /home/pi/.onshape_client_config.yaml
+echo default_stack: prod_api_keys >> /home/pi/.onshape_client_config.yaml
+
 
 echo "-------------------------------------------"
 printf "\n"
