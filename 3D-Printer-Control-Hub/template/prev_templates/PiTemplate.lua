@@ -1,4 +1,3 @@
-
 module ("templates.PiTemplate", thingworx.template.extend)
 
 
@@ -101,16 +100,6 @@ serviceDefinitions.UploadFile(
 )
 
 
---[[
-exportPartStudio():
---]]
-serviceDefinitions.ExportPartStudio(
-    input {name="url", baseType="STRING", description="onshape_url"},
-    output {baseType="BOOLEAN", description=""},
-    description {"Export the Part Studio"}
-)
-
-
 
 --[[
 downloadSTL():
@@ -149,12 +138,7 @@ services.downloadSTL = function(me, headers, query, data)
 end
 --]]
 
-services.ExportPartStudio = function(me, headers, query, data)
-    local rootPath = "/usr/bin/python -W ignore /home/pi/sliceSTL.py \""
-    local url = data.url .. "\""
-    local uploadCmd = io.popen(rootPath .. url)
-    return 200, true
-end
+
 
 --[[
 CALLBACK -- uploadFile():
