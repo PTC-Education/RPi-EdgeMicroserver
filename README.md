@@ -21,7 +21,9 @@ This repository is broken down into LSR (Lua Script Resource) templates for conf
 When you start the EMS (Edge MicroServer) on the Raspberry Pi, you are creating your own RemoteThing that is registered
 with your Thingworx instance. This connection over the AlwaysOn protocol will allow users to utlize their GPIO and custom code remote through Thingworx services and properties. The below image is a diagram displaying the connection flow showing the bi-directional communication.
 
-![alt text](https://github.com/PTC-Education/RaspberryPi-EMS-Lua-Python/blob/main/rpi_alwaysOn_thngwrx.png)
+<p align="center">
+  <img width="500" height="460" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/images/ems_technology_map.png" />
+</p>
 
 ---
 <a name="properties"/>
