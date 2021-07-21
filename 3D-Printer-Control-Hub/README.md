@@ -97,6 +97,19 @@ sudo dpkg --configure -a
 # Rerun installation
 sudo pyhon3 raspi-blinka.py
 ```
+
+Installing Onshape-Client and Prusa-Slicer: 
+ 
+Only do this after you have completed python3 default setup.
+  
+```bash
+# Install onshape-client system wide
+sudo pip install onshape-client
+  
+# Install Prusa-Slicer system wide
+  
+sudo apt install slic3r-prusa
+```
   
 ---  
   
