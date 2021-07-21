@@ -111,46 +111,18 @@ serviceDefinitions.ExportPartStudio(
 )
 
 
-
---[[
-downloadSTL():
-       downloadSTL service defintiion
-
-       Input  - onshapeURL, STRING, url of onshape part for download and export
-       Output - Boolean, if True, 200 
-			 else False, 400
-
---]]
---[[
-serviceDefinitions.downloadSTL(
-    input {name="onshapeURL", baseType="STRING", description="Onshape Part Studio url"},
-    output {baseType="BOOLEAN", description=""},
-    description {"Input an onshape url and it will be sliced locally on the EMS and uploaded to the Octoprint instance for printing"}
-)
---]]
-
-
 --[[
 ------------------------------------------ CALLBACK FUNCTIONS ------------------------------------------------
 --]]
 
-
 --[[
-CALLBACK -- downloadSTL():
+CALLBACK -- ExportPartStudio():
 
-	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
---]]
---[[
-services.downloadSTL = function(me, headers, query, data)
-    local rootPaths = "/usr/bin/python $HOME/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/testingSTL.py \""
-    local url = data.onshapeURL
-    local uploadCmd = io.popen(rootPaths .. url .. "\"")
-    return 200, true
-end
---]]
+	Grabs Onshape url and slices the stl and sends to the 3D printer
 
+--]]
 services.ExportPartStudio = function(me, headers, query, data)
-    local rootPath = "/usr/bin/python -W ignore /home/pi/sliceSTL.py \""
+    local rootPath = "/usr/bin/python -W ignore /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/sliceSTL.py \""
     local url = data.url .. "\""
     local uploadCmd = io.popen(rootPath .. url)
     return 200, true
@@ -160,9 +132,10 @@ end
 CALLBACK -- uploadFile():
 
 	Grabs the url input from Thingworx and forms the string in order to call the exportSTL.py script
+
 --]]
 services.UploadFile = function(me, headers, query, data)
-    local rootPath = "/usr/bin/python /home/pi/RPi-EdgeMicroserver/3D-Printer-Control-Hub/scripts/downloadFile.py \""   
+    local rootPath = "/usr/bin/python /home/pi/downloadFile.py \""   
     local filename = data.filename .. "\" \""
     local repository = data.store .. "\""
     local uploadCmd = io.popen(rootPath .. filename .. repository)
