@@ -16,8 +16,19 @@ our printer's information from anywhere without worrying about port forwarding.
 
 ---
 
+Examples of possble mashup designs for a 3D printer control mashup:
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/Remote%20Monitoring.png" />
+</p>
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/PTC-Education/RPi-EdgeMicroserver/blob/main/3D-Printer-Control-Hub/images/Remote%20Monitoring.png" />
+</p>
 
 
+
+---
 
 
 <a name="raspbian"/>
