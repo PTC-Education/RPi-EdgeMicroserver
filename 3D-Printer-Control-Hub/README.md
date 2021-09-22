@@ -44,7 +44,7 @@ Examples of possble mashup designs for a 3D printer control mashup with defined 
 
 <a name="raspbian"/>
 
-<details open>
+<details close>
 <summary>Installing Raspbian</summary>
 
 ---
@@ -136,6 +136,24 @@ sudo apt install slic3r-prusa
 ---  
   
 </details>
+
+
+
+
+<details><summary>Installing Octoprint on Raspberry Pi</summary>
+
+  
+---
+
+  
+Once you've configured your default python on the Raspberry Pi to python 3 by running raspi-blinka.py, you can <a href="https://community.octoprint.org/t/setting-up-octoprint-on-a-raspberry-pi-running-raspbian-or-raspberry-pi-os/2337">follow this tutorial in the Octoprint forum</a> for installing and setting up Octoprint on your Raspberry Pi.
+  
+  
+---
+  
+  
+</details>
+
 
 
 
@@ -233,7 +251,11 @@ Once our api keys have been verified we can move on to install the Edge Microser
   When installing the Edge Microserver, we are going to build off the existing tutorial posted on the Thingworx Developer Portal, which can be found in the **Links** section above. In order to access the Thingworx Developer portal you must create an account. 
 </p>
   
-
+You can also run the following below to directly download the file
+  
+  ```
+  wget https://developer.thingworx.com/-/media/developerportal/Guides/connect-raspberry-pi-thingworx/MED-61060-CD-054_SP10_Microserver-Linux-arm-hwfpu-openssl-5-4-10-1509.zip
+  ```
   
 <p> 
 The high level of the Developer Portal Tutorial walks the user through install, api key generation, and base configuration of the remote thing. Due to the fact that we are implementing a prebuilt edge device we can skip some of the steps of the tutorial. As you progress from step 1 cross reference the differences outlined in the next section here in order to get your Printer Control Thing setup.
